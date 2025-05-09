@@ -1,3 +1,3 @@
-# C++ or CPP
+# C++
 CPP-Programming Concept For Learning.
 Covers basics to advanced topics.
