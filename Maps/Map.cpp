@@ -6,8 +6,10 @@
  * Elements in a map are:
  * Accessible by keys (not index), and each key is unique.
  * Automatically sorted in ascending order by their keys.
- * 
- * 
+ * Auto keyword, This allows the compiler to automatically determine the correct data type for each key-value pair.
+ * Since map elements consist of both keys and values, you have to include .first to access the keys, and .second to access values in the loop.
+ *
+ *
  */
 
 /*
@@ -50,5 +52,18 @@ int main()
         std::cout << person.first << " is: " << person.second << "\n";
     }
 
+    /**
+     * If I want to reverse the order, we can use the greater.
+     */
+
+    std::map<std::string, int, std::greater<std::string>> people1 = {
+        {"Jhon", 32},
+        {"Adele", 45},
+        {"Bo", 29}};
+
+    for (auto person : people1)
+    {
+        std::cout << person.first << " is : " << person.second << "\n";
+    }
     return 0;
 }

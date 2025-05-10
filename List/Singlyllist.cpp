@@ -400,7 +400,7 @@ public:
             {
             case 1:
                 cout << "Enter data: ";
-                list.insertAtBeginning(cin);
+                list.insertAtBeginning(std::cin);
                 break;
             case 2:
                 cout << "Enter data: ";
