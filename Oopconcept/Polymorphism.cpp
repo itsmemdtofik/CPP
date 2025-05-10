@@ -24,6 +24,7 @@ class BaseClass {
 * Derived class from BaseClass
 */
 
+
 class DerivedClass : public BaseClass {
     public:
         void display(){
