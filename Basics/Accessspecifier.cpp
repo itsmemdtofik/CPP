@@ -10,10 +10,10 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 
 // Base class
-class Person
-{
+class Person {
 private:
     std::string secret; // Only accessible within this class
 
@@ -23,26 +23,25 @@ protected:
 public:
     int age; // Accessible everywhere
 
-    Person(const std::string &name, int age, const std::string &secret)
-        : name(name), age(age), secret(secret) {}
+    Person(std::string name, const int age, std::string secret)
+        : secret(std::move(secret)), name(std::move(name)), age(age) {
+    }
 
-    void revealSecret()
-    {
+    void revealSecret() const {
         std::cout << "My secret is: " << secret << std::endl; // OK (private accessed internally)
     }
 };
 
 // Derived class
-class Employee : public Person
-{
+class Employee : public Person {
 public:
     std::string company;
 
-    Employee(const std::string &name, int age, const std::string &secret, const std::string &company)
-        : Person(name, age, secret), company(company) {}
+    Employee(const std::string &name, const int age, const std::string &secret, std::string company)
+        : Person(name, age, secret), company(std::move(company)) {
+    }
 
-    void introduce()
-    {
+    void introduce() {
         // ✅ Can access protected member (name)
         std::cout << "Hi, I'm " << name << ", age " << age << std::endl;
 
@@ -54,13 +53,12 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     Employee emp("Alice", 25, "Loves chocolate", "Tech Corp");
 
     // ✅ Public access
     std::cout << "Age: " << emp.age << std::endl; // OK (public)
-    emp.revealSecret();                           // OK (public method)
+    emp.revealSecret(); // OK (public method)
 
     // ❌ Private/protected access fails
     // std::cout << emp.name;                          // Error (protected)
