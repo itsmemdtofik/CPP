@@ -35,12 +35,9 @@
 #include <string>
 #include <list>
 
-int main()
-{
-
+int main() {
     std::list<std::string> list = {"Apple", "Mango", "Orange", "Banana"};
-    for (std::string li : list)
-    {
+    for (std::string li: list) {
         std::cout << li << "\n";
     }
 
@@ -59,8 +56,7 @@ int main()
     list.back() = "SanDisk";
 
     std::cout << "-----New List are----- \n";
-    for (std::string l : list)
-    {
+    for (std::string l: list) {
         std::cout << l << "\n";
     }
 
@@ -71,8 +67,7 @@ int main()
     list.push_front("Google");
 
     std::cout << "-----New List are------\n";
-    for (std::string li : list)
-    {
+    for (std::string li: list) {
         std::cout << li << "\n";
     }
 
@@ -83,8 +78,7 @@ int main()
     list.pop_front();
 
     std::cout << "-----New List are------\n";
-    for (std::string li : list)
-    {
+    for (std::string li: list) {
         std::cout << li << "\n";
     }
 
