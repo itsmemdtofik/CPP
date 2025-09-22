@@ -41,7 +41,7 @@ public:
 
 void MyClass::show()
 { // using scope resolution
-    cout << "Hello!" << endl;
+    std::cout << "Hello!" << std::endl;
 }
 /**
  * ! Accessing static member of class

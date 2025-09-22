@@ -2,7 +2,7 @@
  * ! Encapsulation in C++
  *
  * The meaning of encapsulation is to make sure that "sensitive" data is hidden from users.
- * To acheive this, you must declare class variables / attributes as private.
+ * To achieve this, you must declare class variables / attributes as private.
  * If you want others to read or modify the value of a private member, you can provide the public
  * get() and set() methods.
  *
@@ -10,33 +10,28 @@
  */
 
 /**
- * ! Lets try to access the private members using get() and set() methods.
+ * ! Let's try to access the private members using get() and set() methods.
  * 
  */
 
 #include <iostream>
-#include <string>
 
-class Employee
-{
 
+class Employee {
 private:
-    int salary;
+    int salary = 0;
 
 public:
-    void setSalary(int s)
-    {
+    void setSalary(int s) {
         salary = s;
     }
 
-    int getSalary()
-    {
+    int getSalary() const {
         return salary;
     }
 };
 
-int main()
-{
+int main() {
     Employee emp;
     emp.setSalary(500000);
 

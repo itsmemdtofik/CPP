@@ -71,10 +71,10 @@ public:
     EmployeeDatabase();
     ~EmployeeDatabase();
 
-    void addEmployee(const Employee &emp);
-    void removeEmployee(const std::string &name);
+    void addEmployee(const Employee &emp) const;
+    void removeEmployee(const std::string &name) const;
     const Employee *findEmployee(const std::string &name) const;
-    void giveRaise(const std::string &name, double amount);
+    void giveRaise(const std::string &name, double amount) const;
 
 private:
     std::unique_ptr<EmployeeDatabaseImpl> pImpl;
@@ -127,12 +127,11 @@ public:
 EmployeeDatabase::EmployeeDatabase() : pImpl(std::make_unique<EmployeeDatabaseImpl>()) {}
 EmployeeDatabase::~EmployeeDatabase() = default;
 
-void EmployeeDatabase::addEmployee(const Employee &emp) { pImpl->addEmployee(emp); }
-void EmployeeDatabase::removeEmployee(const std::string &name) { pImpl->removeEmployee(name); }
+void EmployeeDatabase::addEmployee(const Employee &emp) const { pImpl->addEmployee(emp); }
+void EmployeeDatabase::removeEmployee(const std::string &name) const { pImpl->removeEmployee(name); }
 const Employee *EmployeeDatabase::findEmployee(const std::string &name) const { return pImpl->findEmployee(name); }
 
-void EmployeeDatabase::giveRaise(const std::string &name, double amount)
-{
+void EmployeeDatabase::giveRaise(const std::string &name, double amount) const {
     const Employee *emp = findEmployee(name);
     if (!emp)
         throw std::runtime_error("Employee not found");
@@ -162,7 +161,7 @@ int main()
         }
 
         // Demonstrate immutable pattern
-        Employee jane = Employee("Jane Smith", 28, 65000, "Marketing");
+        const auto jane = Employee("Jane Smith", 28, 65000, "Marketing");
         Employee janeHR = jane.withNewDepartment("Human Resources");
     }
     catch (const std::exception &e)

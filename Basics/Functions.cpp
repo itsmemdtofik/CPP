@@ -14,7 +14,9 @@
  using namespace std;
 
  void foo(){//Declaration
-    cout << "I just got executed!\n";//definition
+    int count = 0;
+    count++;
+    cout << "I just got executed! " << count;//definition
  }
 
  int main(){
